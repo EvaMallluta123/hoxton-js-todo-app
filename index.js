@@ -1,3 +1,42 @@
+let state ={
+    todos: [
+        { text:`Work out`, completed: false},
+        { text: `See the doctor`, completed: true},
+        { text: `Go shopping`, completed: false},
+        
+
+    ],
+    showComplited: true,
+}
+
+function createTodo(text){
+    let foundMachs=state.todos.some(todo=> todo.text===text)
+    if (foundMachs) return
+
+    state.todos.push({text:text, completed: false})
+}
+function deleteTodo(text){
+    let updateteTodo= state.todos.filter(todo=>todo.text!=text)
+    state.todos=updateteTodo
+}
+function deleteAlltodos(){
+    state.todos= []
+}
+function toggleTodo(text) {
+let match=state.todos.find(todo=>todo.text===text)
+if (!match) return
+
+match.completed!=match.completed
+}
+
+function toggleshowcompleted(){
+
+    state.showComplited!=state.showComplited
+}
+
+
+
+
 
 function renderOptionsSection(){
 let OptionsSection= document.createElement("section")
@@ -27,10 +66,10 @@ appEl.append(OptionsSection)
  function renderAddItem(){
     let SectionAddItem=document.createElement("section")
     SectionAddItem.className="add-item"
-
     let SeSectionAddItemTitle=document.createElement("h3")
     SeSectionAddItemTitle.className=("section-tittle")
     SeSectionAddItemTitle.innerText="ADD ITEM"
+ 
 
     let SectionAddItemlabel=document.createElement("label")
     let SectionAddItemForm=document.createElement("form")
@@ -60,7 +99,9 @@ function renderToDo(){
  let SectionToDoInput=document.createElement("input")
  SectionToDoInput.type="checkbox"
  let SectionToDop=document.createElement("p")
- SectionToDop.innerText="Go shopping"
+//  for(todo of state.todos){
+//  SectionToDop.innerText=todo.text
+//  }
  let SectionToDoButton=document.createElement("button")
  SectionToDoButton.innerText="Delete"
  SectionToDoLi.append(SectionToDoInput, SectionToDop, SectionToDoButton)
@@ -70,7 +111,12 @@ function renderToDo(){
  let SectionToDoInput2=document.createElement("input")
  SectionToDoInput2.type="checkbox"
  let SectionToDop2=document.createElement("p")
- SectionToDop2.innerText="Work out"
+ for(let todo of state.todos){
+    SectionToDop.textContent=todo.text
+    SectionToDop2.textContent=todo.text
+ 
+    }
+//  SectionToDop2.innerText="Work out"
  let SectionToDoButton2=document.createElement("button")
  SectionToDoButton2.innerText="Delete"
  SectionToDoLi2.append(SectionToDoInput2, SectionToDop2, SectionToDoButton2)
